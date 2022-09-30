@@ -1,0 +1,6 @@
+# IGNORE ALL
+*
+*/
+
+# unignore - everything should be added manually
+!.gitignore
