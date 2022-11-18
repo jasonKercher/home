@@ -28,6 +28,7 @@ nmap <F12> :%s/[\t ]\+$//<cr>
 "set shiftwidth=4
 "set expandtab
 
+let mapleader=","
 
 """""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
