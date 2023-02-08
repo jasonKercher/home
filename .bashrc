@@ -5,5 +5,6 @@ PS1='\[\e[33m\]\u\[\e[37m\]@\[\e[36m\]\h\[\e[37m\]:\W `if [ $? = 0 ]; then echo 
 stty -ixon
 
 export CPATH="/usr/local/include/:$CPATH"
+export PATH="$HOME/.local/bin/:$PATH"
 
 
