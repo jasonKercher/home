@@ -10,3 +10,6 @@ export LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH"
 
 # blinking bar for xterm
 echo -e -n "\x1b[\x35 q"
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
