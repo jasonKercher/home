@@ -1,0 +1,4 @@
+xterm*font:     *-fixed-*-*-*-18-*
+xterm*vt100.translations: #override \
+    Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD)

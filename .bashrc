@@ -7,4 +7,5 @@ stty -ixon
 export CPATH="/usr/local/include/:$CPATH"
 export PATH="$HOME/.local/bin/:$PATH"
 
-
+# blinking bar for xterm
+echo -e -n "\x1b[\x35 q"
