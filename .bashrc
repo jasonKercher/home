@@ -16,3 +16,6 @@ alias grep='grep --color=auto'
 
 
 . "$HOME/.cargo/env"
+
+export PATH="$PATH:"/opt/microchip/xc16/v2.00/bin""
+export PATH="$PATH:"/opt/microchip/xc32/v4.10/bin""
