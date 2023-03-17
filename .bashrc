@@ -6,18 +6,20 @@ stty -ixon
 
 export CPATH="/usr/local/include/:$CPATH"
 export PATH="$HOME/.local/bin/:$PATH"
-export LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH"
 
 # blinking bar for xterm
 echo -e -n "\x1b[\x35 q"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-
+alias vim='LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH" vim'
 
 . "$HOME/.cargo/env"
 
-export PATH="$PATH:"/opt/microchip/xc16/v2.00/bin""
-export PATH="$PATH:"/opt/microchip/xc32/v4.10/bin""
-
+export PATH="$PATH:/opt/microchip/xc16/v2.00/bin"
+export PATH="$PATH:/opt/microchip/xc32/v4.10/bin"
 export PATH="$PATH:/opt/microchip/xc8/v2.40/bin"
+
+
+torocko() { cd /home/rlc/cds-2000/vari-mx6/rocko/"$1"; }
