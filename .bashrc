@@ -4,8 +4,8 @@ PS1='\[\e[33m\]\u\[\e[37m\]@\[\e[36m\]\h\[\e[37m\]:\W `if [ $? = 0 ]; then echo 
 # to search forward on reverse search.
 stty -ixon
 
+export TERMINAL=alacritty
 export CPATH="/usr/local/include/:$CPATH"
-export PATH="$HOME/.local/bin/:$PATH"
 #export LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH"
 
 # blinking bar for xterm
@@ -15,11 +15,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vim='LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH" vim'
 
-. "$HOME/.cargo/env"
 
-export PATH="$PATH:/opt/microchip/xc16/v2.00/bin"
-export PATH="$PATH:/opt/microchip/xc32/v4.10/bin"
-export PATH="$PATH:/opt/microchip/xc8/v2.40/bin"
+. "$HOME/.cargo/env"
 
 
 torocko() { cd /home/rlc/cds-2000/vari-mx6/rocko/"$1"; }
