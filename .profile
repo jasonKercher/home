@@ -1,5 +1,7 @@
 export TERMINAL=alacritty
 
+export clean_path="$PATH"
+
 . "$HOME/.cargo/env"
 
 export PATH="$HOME/.local/bin/:$PATH"
