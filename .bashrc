@@ -7,6 +7,9 @@ stty -ixon
 export TERMINAL=alacritty
 export CPATH="/usr/local/include/:$CPATH"
 
+HISTSIZE=20000
+HISTFILESIZE=20000
+
 # blinking bar for xterm
 echo -e -n "\x1b[\x35 q"
 
@@ -14,6 +17,5 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 . "$HOME/.cargo/env"
-
 
 torocko() { cd /home/rlc/cds-2000/vari-mx6/rocko/"$1"; }
