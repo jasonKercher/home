@@ -58,8 +58,8 @@ let g:indentLine_char = '┊'
 autocmd BufReadPost * silent! normal! g`"zv
 
 "clang Format
-map <C-K> :py3f /usr/share/clang/clang-format-12/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-12/clang-format.py<cr>
+map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 
 "function! Formatonsave()
 "  let l:formatdiff = 1
