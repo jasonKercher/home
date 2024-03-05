@@ -6,6 +6,8 @@ stty -ixon
 
 export TERMINAL=alacritty
 export CPATH="/usr/local/include/:$CPATH"
+export TIVAWARE_DIR=/opt/sw-tm4c-1.1/
+export TIVAWARE2_DIR=/opt/sw-tm4c-2.1.4/
 
 HISTSIZE=20000
 HISTFILESIZE=20000
@@ -16,4 +18,4 @@ echo -e -n "\x1b[\x35 q"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-torocko() { cd /home/rlc/cds-2000/vari-mx6/rocko/"$1"; }
+rm() { mv -v "$@" ~/dumpster; }

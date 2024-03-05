@@ -8,6 +8,8 @@ set ignorecase
 set nowrap
 set scrolloff=12
 
+set backup
+set backupdir=~/.backupdir
 set undodir=~/.undodir
 set undofile
 
@@ -19,8 +21,8 @@ set list
 nmap <F12> :%s/[\t ]\+$//<cr>
 
 " causes lag on big files
-"set foldmethod=syntax
-"set foldlevelstart=20
+set foldmethod=syntax
+set foldlevelstart=20
 
 " Matching rlc standards"
 "set softtabstop=4
@@ -38,17 +40,18 @@ Plug 'Yggdroot/indentLine'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
 
 "" COLORS
-let ayucolor="dark"
-let g:airline_theme='ayu_dark'
-colorscheme ayu
-
 set termguicolors
+let g:airline_theme='papercolor'
+set background=dark
+colorscheme PaperColor
+
 
 "" IndentLine
 let g:indentLine_char = '┊'
@@ -58,8 +61,8 @@ let g:indentLine_char = '┊'
 autocmd BufReadPost * silent! normal! g`"zv
 
 "clang Format
-map <C-K> :py3f /usr/share/clang/clang-format-12/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-12/clang-format.py<cr>
+map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 
 "function! Formatonsave()
 "  let l:formatdiff = 1
