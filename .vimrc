@@ -41,7 +41,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-abolish'
+Plug 'jasonKercher/vim-abolish'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
