@@ -10,7 +10,7 @@ set scrolloff=12
 
 set backup
 set backupdir=~/.backupdir
-set undodir=~/.undodir
+set undodir=~/.vim/.undodir
 set undofile
 
 set listchars=tab:\|\ ,extends:›,precedes:‹,nbsp:·,trail:·
