@@ -21,8 +21,8 @@ set list
 nmap <F12> :%s/[\t ]\+$//<cr>
 
 " causes lag on big files
-set foldmethod=syntax
-set foldlevelstart=20
+"set foldmethod=syntax
+"set foldlevelstart=20
 
 " Matching rlc standards"
 "set softtabstop=4
@@ -31,6 +31,9 @@ set foldlevelstart=20
 "set expandtab
 
 let mapleader=","
+
+" Stop auto formatting comments to the next line.
+autocmd BufNewFile,BufRead * setlocal formatoptions+=/
 
 """""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
@@ -69,11 +72,15 @@ imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 "  py3f /usr/share/clang/clang-format-11/clang-format.py
 "endfunction
 "autocmd BufWritePre *.h,*.c call Formatonsave()
+"
+
+"""""""""""""""""""""""""""""""""""""""""""""
+" Everything below here is for Coc
+"""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>d :call CocAction('diagnosticToggle')<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""
 " The rest is copied from coc github
-
-"""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""
 
 " Some servers have issues with backup files, see #649.
