@@ -4,7 +4,6 @@ PS1='\[\e[33m\]\u\[\e[37m\]@\[\e[36m\]\h\[\e[37m\]:\W `if [ $? = 0 ]; then echo 
 # to search forward on reverse search.
 stty -ixon
 
-export TERMINAL=alacritty
 export CPATH="/usr/local/include/:$CPATH"
 export TIVAWARE_DIR=/opt/sw-tm4c-1.1/
 export TIVAWARE2_DIR=/opt/sw-tm4c-2.1.4/
