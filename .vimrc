@@ -1,12 +1,15 @@
-set encoding=utf-8
-set syntax=on
 set number
 set hlsearch
 set incsearch
-set backspace=indent,eol,start
 set ignorecase
 set nowrap
+set cursorline
+
+set syntax=on
 set scrolloff=12
+set colorcolumn=80
+set encoding=utf-8
+set backspace=indent,eol,start
 
 set backup
 set backupdir=~/.backupdir
@@ -45,6 +48,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'jasonKercher/vim-abolish'
+Plug 'mbbill/undotree'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -55,15 +59,17 @@ let g:airline_theme='papercolor'
 set background=dark
 colorscheme PaperColor
 
+" Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 
-"" IndentLine
+" IndentLine
 let g:indentLine_char = '┊'
 "let g:indentLine_setColors = 0
 
 " Return to last position in file
 autocmd BufReadPost * silent! normal! g`"zv
 
-"clang Format
+" clang-format
 map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 
