@@ -33,6 +33,8 @@ nmap <F12> :%s/[\t ]\+$//<cr>
 "set shiftwidth=4
 "set expandtab
 
+au FileType odin set ts=8 softtabstop=8 sw=8 noexpandtab
+
 let mapleader=","
 
 " Stop auto formatting comments to the next line.
