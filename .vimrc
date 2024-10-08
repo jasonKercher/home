@@ -33,7 +33,7 @@ nmap <F12> :%s/[\t ]\+$//<cr>
 "set shiftwidth=4
 "set expandtab
 
-au FileType odin set ts=8 softtabstop=8 sw=8 noexpandtab
+au FileType odin setlocal ts=8 softtabstop=8 sw=8 noexpandtab
 
 let mapleader=","
 
@@ -60,6 +60,12 @@ set termguicolors
 let g:airline_theme='papercolor'
 set background=dark
 colorscheme PaperColor
+
+" Override background color
+highlight Normal ctermbg=black
+highlight NonText ctermbg=black
+highlight Normal guibg=#080808
+highlight NonText guibg=#080808
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
