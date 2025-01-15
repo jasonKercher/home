@@ -28,10 +28,10 @@ nmap <F12> :%s/[\t ]\+$//<cr>
 "set foldlevelstart=20
 
 " Matching rlc standards"
-"set softtabstop=4
-"set tabstop=4
-"set shiftwidth=4
-"set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 au FileType odin setlocal ts=8 softtabstop=8 sw=8 noexpandtab
 
@@ -80,6 +80,9 @@ autocmd BufReadPost * silent! normal! g`"zv
 " clang-format
 map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
+
+" Why does `:help` this need a binding anyway?
+nmap <F1> <nop>
 
 "function! Formatonsave()
 "  let l:formatdiff = 1
