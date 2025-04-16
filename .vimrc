@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set hlsearch
 set incsearch
 set ignorecase
@@ -6,7 +7,7 @@ set nowrap
 set cursorline
 
 set syntax=on
-set scrolloff=12
+set scrolloff=8
 set colorcolumn=80
 set encoding=utf-8
 set backspace=indent,eol,start
@@ -33,7 +34,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-au FileType odin setlocal ts=8 softtabstop=8 sw=8 noexpandtab
+autocmd FileType gitcommit setlocal colorcolumn=72
+autocmd FileType asm setlocal ts=8 softtabstop=8 sw=8 noexpandtab nolist
+autocmd FileType sh setlocal ts=8 softtabstop=8 sw=8 noexpandtab
+autocmd FileType odin setlocal ts=8 softtabstop=8 sw=8 noexpandtab
 
 let mapleader=","
 
