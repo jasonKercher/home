@@ -8,7 +8,7 @@ set cursorline
 
 set syntax=on
 set scrolloff=8
-set colorcolumn=80
+set colorcolumn=81
 set encoding=utf-8
 set backspace=indent,eol,start
 
@@ -34,7 +34,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-autocmd FileType gitcommit setlocal colorcolumn=72
+autocmd FileType gitcommit setlocal colorcolumn=73
 autocmd FileType asm setlocal ts=8 softtabstop=8 sw=8 noexpandtab nolist
 autocmd FileType sh setlocal ts=8 softtabstop=8 sw=8 noexpandtab
 autocmd FileType odin setlocal ts=8 softtabstop=8 sw=8 noexpandtab
@@ -70,6 +70,9 @@ highlight Normal ctermbg=black
 highlight NonText ctermbg=black
 highlight Normal guibg=#080808
 highlight NonText guibg=#080808
+
+" Italic comments
+highlight Comment cterm=italic gui=italic
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
