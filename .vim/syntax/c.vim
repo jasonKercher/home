@@ -256,8 +256,17 @@ if exists("c_gnu")
   syn keyword	cStorageClass	__restrict__ __volatile__ __noreturn__
 endif
 syn keyword	cType		int long short char void
-syn keyword	cType		uint ulong ushort uchar ulonglong
 syn keyword	cType		signed unsigned float double
+
+" util stuff
+syn keyword	cStatment	Dynamic Slice Queue Map Set Result
+syn keyword	cType		Dynamic Slice Queue Map Set Result
+syn keyword	cType		Bitset8 Bitset16 Bitset32 Bitset64 Bitset
+syn keyword	cType		uint ulong ushort uchar ulonglong longlong
+syn keyword	cType		i8 i16 i32 i64 u8 u16 u32 u64
+syn keyword	cType		intptr uintptr isize usize
+syn keyword	cType		f32 f64
+
 if !exists("c_no_ansi") || exists("c_ansi_typedefs")
   syn keyword   cType		size_t ssize_t off_t wchar_t ptrdiff_t sig_atomic_t fpos_t
   syn keyword   cType		clock_t time_t va_list jmp_buf FILE DIR div_t ldiv_t
@@ -267,7 +276,6 @@ if !exists("c_no_c99") " ISO C99
   syn keyword	cType		_Bool bool _Complex complex _Imaginary imaginary
   syn keyword	cType		int8_t int16_t int32_t int64_t
   syn keyword	cType		uint8_t uint16_t uint32_t uint64_t
-  syn keyword	cType		i8 i16 i32 i64 u8 u16 u32 u64
   if !exists("c_no_bsd")
     " These are BSD specific.
     syn keyword	cType		u_int8_t u_int16_t u_int32_t u_int64_t
@@ -276,7 +284,7 @@ if !exists("c_no_c99") " ISO C99
   syn keyword	cType		uint_least8_t uint_least16_t uint_least32_t uint_least64_t
   syn keyword	cType		int_fast8_t int_fast16_t int_fast32_t int_fast64_t
   syn keyword	cType		uint_fast8_t uint_fast16_t uint_fast32_t uint_fast64_t
-  syn keyword	cType		intptr_t uintptr_t intptr uintptr
+  syn keyword	cType		intptr_t uintptr_t
   syn keyword	cType		intmax_t uintmax_t
 endif
 
