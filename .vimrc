@@ -52,7 +52,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'jacoborus/tender.vim'
 Plug 'jasonKercher/vim-abolish'
 Plug 'mbbill/undotree'
 call plug#end()
@@ -61,9 +61,11 @@ call plug#end()
 
 "" COLORS
 set termguicolors
-let g:airline_theme='papercolor'
 set background=dark
-colorscheme PaperColor
+
+colorscheme tender
+let g:airline_theme='tender'
+
 
 " Override background color
 highlight Normal ctermbg=black
