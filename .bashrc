@@ -23,7 +23,6 @@ HISTFILESIZE=20000
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-eval $(keychain --eval id_github)
-eval $(keychain --eval id_redmine)
+#eval $(keychain --eval id_github)
 
 rm() { mv -v "$@" ~/.dumpster-fire; }
