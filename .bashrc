@@ -14,6 +14,8 @@ export CPATH="/usr/local/include/:$CPATH"
 export TIVAWARE_DIR=/opt/sw-tm4c-1.1/
 export TIVAWARE2_DIR=/opt/sw-tm4c-2.2/
 
+export EDITOR=/usr/bin/vim
+
 HISTSIZE=20000
 HISTFILESIZE=20000
 
