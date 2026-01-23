@@ -48,13 +48,15 @@ autocmd BufNewFile,BufRead * setlocal formatoptions+=/
 " PLUGINS
 "
 call plug#begin()
-Plug 'Yggdroot/indentLine'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mbbill/undotree'
+Plug 'Yggdroot/indentLine'
+Plug 'jasonKercher/vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jacoborus/tender.vim'
-Plug 'jasonKercher/vim-abolish'
-Plug 'mbbill/undotree'
+
+" Theme
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -63,15 +65,15 @@ call plug#end()
 set termguicolors
 set background=dark
 
-colorscheme tender
-let g:airline_theme='tender'
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 
 
 " Override background color
-highlight Normal ctermbg=black
-highlight NonText ctermbg=black
-highlight Normal guibg=#080808
-highlight NonText guibg=#080808
+"highlight Normal ctermbg=black
+"highlight NonText ctermbg=black
+"highlight Normal guibg=#080808
+"highlight NonText guibg=#080808
 
 " Italic comments
 highlight Comment cterm=italic gui=italic
