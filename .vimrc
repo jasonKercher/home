@@ -24,10 +24,6 @@ set list
 
 nmap <F12> :%s/[\t ]\+$//<cr>
 
-" causes lag on big files
-"set foldmethod=syntax
-"set foldlevelstart=20
-
 " Matching rlc standards"
 set softtabstop=4
 set tabstop=4
