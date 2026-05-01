@@ -18,38 +18,25 @@ opt.colorcolumn    = "81"
 opt.encoding       = "utf-8"
 opt.backspace      = { "indent", "eol", "start" }
 
--- Disable mouse control
 opt.mouse          = ""
 
--- Backup / Undo
 opt.backup    = true
 opt.backupdir = { vim.fn.expand("~/.config/nvim/.backupdir") }
 opt.undodir   = { vim.fn.expand("~/.config/nvim/.undodir") }
 opt.undofile  = true
 
--- Listchars / whitespace display
 opt.listchars = { tab = "| ", extends = "›", precedes = "‹", nbsp = "·", trail = "·" }
 opt.showbreak = "↪ "
 opt.list      = true
 
--- =============================================
--- INDENTATION (Rlc standards)
--- =============================================
-
+-- RLC
 opt.softtabstop = 4
 opt.tabstop     = 4
 opt.shiftwidth  = 4
 opt.expandtab   = true
 
--- =============================================
--- LEADER (must be set before lazy loads plugins)
--- =============================================
-
 vim.g.mapleader = ","
 
--- =============================================
--- AUTOCOMMANDS
--- =============================================
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
@@ -164,20 +151,20 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     -- (Colors, UI, and Utility plugins remain same as your source)
     {
-        "morhetz/gruvbox",
+        "whatyouhide/vim-gotham",
         lazy = false,
         priority = 1000,
         config = function()
             vim.opt.termguicolors = true
             vim.opt.background = "dark"
-            vim.cmd("colorscheme gruvbox")
+            vim.cmd("colorscheme gotham")
         end,
     },
     { "romainl/flattened", lazy = true },
     {
         "vim-airline/vim-airline",
         dependencies = { "vim-airline/vim-airline-themes" },
-        config = function() vim.g.airline_theme = "gruvbox" end,
+        config = function() vim.g.airline_theme = "gotham" end,
     },
     {
         "Yggdroot/indentLine",
@@ -206,18 +193,20 @@ require("lazy").setup({
                         if cmp.visible() then cmp.select_next_item() elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump() else fallback() end
                     end, { "i", "s" }),
                 }),
-                sources = cmp.config.sources({ { name = "nvim_lsp" } }, { { name = "buffer" } }),
+                sources = cmp.config.sources({ { name = "nvim_lsp" } }, { { name = "buffer" } }, { { name = "path" } }),
             })
         end,
     },
 })
 
--- =============================================
--- NATIVE LSP SETUP
--- =============================================
+-- Post plugin import
+vim.api.nvim_set_hl(0, 'Comment', { italic=true })
+
+
+-- Lsp
+------
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Define clangd
 vim.lsp.config['clangd'] = {
     cmd = { 'clangd' }, -- Make sure this is in your $PATH
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
@@ -239,23 +228,18 @@ vim.lsp.config['ols'] = {
     capabilities = capabilities,
 }
 
--- Enable them
 vim.lsp.enable({ 'clangd', 'bashls', 'ols' })
 
 
--- =============================================
--- KEYMAPS
--- =============================================
+-- Remaps
 
 local map = vim.keymap.set
 
--- Strip trailing whitespace
 map("n", "<F12>", ":%s/[\\t ]\\+$//<CR>", { desc = "Strip trailing whitespace" })
 
 -- Disable F1 help
 map("n", "<F1>", "<nop>")
 
--- Undotree toggle
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle Undotree" })
 
 map('n', ']g', vim.diagnostic.goto_next, { desc = "Next error" })
