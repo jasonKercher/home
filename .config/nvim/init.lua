@@ -85,6 +85,18 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Return to last edit position when opening files
+vim.api.nvim_create_autocmd("BufReadPost", {
+    group    = augroup,
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end,
+})
+
 -- LSP keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
     group    = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
@@ -98,9 +110,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.buf.format({ async = true }) 
         end, ext("Format buffer"))
 
+        lmap("n", "<C-k>", function()
+            local line = vim.api.nvim_win_get_cursor(0)[1]
+            vim.lsp.buf.format({
+                range = {
+                    ["start"] = { line, 0 },
+                    ["end"] = { line, 999 },
+                }
+            })
+        end, ext("Format current line"))
+
         lmap("v", "<C-k>", function()
             vim.lsp.buf.format({ range = {} })
-            -- Exit visual mode
             vim.api.nvim_feedkeys(
                 vim.api.nvim_replace_termcodes("<Esc>", true, false, true), 
                 "n", 
@@ -200,15 +221,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.lsp.config['clangd'] = {
     cmd = { 'clangd' }, -- Make sure this is in your $PATH
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-    root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
-    capabilities = capabilities,
-}
-
--- Define bashls
-vim.lsp.config['bashls'] = {
-    cmd = { 'bash-language-server', 'start' },
-    filetypes = { 'sh' },
-    root_markers = { '.git' },
+    root_markers = { '.clang-format', '.git', 'compile_commands.json', 'compile_flags.txt' },
     capabilities = capabilities,
 }
 
