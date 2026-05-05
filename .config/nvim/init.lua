@@ -32,6 +32,26 @@ opt.list      = true
 vim.g.mapleader = ","
 
 
+local tabs_rlc = false
+local function set_tabs_rlc()
+  vim.opt.softtabstop = 4
+  vim.opt.tabstop     = 4
+  vim.opt.shiftwidth  = 4
+  vim.opt.expandtab   = true
+  vim.notify("Tabs: RLC")
+
+  tabs_rlc = true
+end
+local function set_tabs_default()
+  vim.opt.softtabstop = 8
+  vim.opt.tabstop     = 8
+  vim.opt.shiftwidth  = 8
+  vim.opt.expandtab   = false
+  vim.notify("Tabs: default")
+
+  tabs_rlc = false
+end
+
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
 -- Filetype-specific indentation overrides
@@ -47,22 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
     group    = augroup,
     pattern  = { "asm" },
     callback = function()
-        vim.opt_local.tabstop     = 8
-        vim.opt_local.softtabstop = 8
-        vim.opt_local.shiftwidth  = 8
-        vim.opt_local.expandtab   = false
-        vim.opt_local.list        = false
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    group    = augroup,
-    pattern  = { "sh", "odin" },
-    callback = function()
-        vim.opt_local.tabstop     = 8
-        vim.opt_local.softtabstop = 8
-        vim.opt_local.shiftwidth  = 8
-        vim.opt_local.expandtab   = false
+        vim.opt_local.list = false
     end,
 })
 
@@ -248,23 +253,12 @@ map('n', '<leader>fg', builtin.live_grep,  { desc = 'Live Grep' })
 map('n', '<leader>fb', builtin.buffers,    { desc = 'List Buffers' })
 map('n', '<leader>fh', builtin.help_tags,  { desc = 'Help Tags' })
 
-
 -- RLC style toggle
-local tab_custom = false
 map("n", "<leader>r", function()
-  tab_custom = not tab_custom
-  if tab_custom then
-    vim.opt.softtabstop = 4
-    vim.opt.tabstop     = 4
-    vim.opt.shiftwidth  = 4
-    vim.opt.expandtab   = true
-    vim.notify("Tabs: RLC STLYE")
+  if tabs_rlc then
+    set_tabs_default()
   else
-    vim.opt.softtabstop = 8
-    vim.opt.tabstop     = 8
-    vim.opt.shiftwidth  = 8
-    vim.opt.expandtab   = false
-    vim.notify("Tabs: default")
+    set_tabs_rlc()
   end
 end, { desc = "Toggle tab style (custom <-> default)" })
 
