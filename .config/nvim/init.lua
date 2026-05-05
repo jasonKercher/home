@@ -29,12 +29,6 @@ opt.listchars = { tab = "| ", extends = "›", precedes = "‹", nbsp = "·", tr
 opt.showbreak = "↪ "
 opt.list      = true
 
--- RLC
---opt.softtabstop = 4
---opt.tabstop     = 4
---opt.shiftwidth  = 4
---opt.expandtab   = true
-
 vim.g.mapleader = ","
 
 
@@ -253,4 +247,25 @@ map('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
 map('n', '<leader>fg', builtin.live_grep,  { desc = 'Live Grep' })
 map('n', '<leader>fb', builtin.buffers,    { desc = 'List Buffers' })
 map('n', '<leader>fh', builtin.help_tags,  { desc = 'Help Tags' })
+
+
+-- RLC style toggle
+local tab_custom = false
+map("n", "<leader>r", function()
+  tab_custom = not tab_custom
+  if tab_custom then
+    vim.opt.softtabstop = 4
+    vim.opt.tabstop     = 4
+    vim.opt.shiftwidth  = 4
+    vim.opt.expandtab   = true
+    vim.notify("Tabs: RLC STLYE")
+  else
+    vim.opt.softtabstop = 8
+    vim.opt.tabstop     = 8
+    vim.opt.shiftwidth  = 8
+    vim.opt.expandtab   = false
+    vim.notify("Tabs: default")
+  end
+end, { desc = "Toggle tab style (custom <-> default)" })
+
 
