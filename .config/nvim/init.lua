@@ -30,10 +30,10 @@ opt.showbreak = "↪ "
 opt.list      = true
 
 -- RLC
-opt.softtabstop = 4
-opt.tabstop     = 4
-opt.shiftwidth  = 4
-opt.expandtab   = true
+--opt.softtabstop = 4
+--opt.tabstop     = 4
+--opt.shiftwidth  = 4
+--opt.expandtab   = true
 
 vim.g.mapleader = ","
 
@@ -93,8 +93,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local ext  = function(desc) return vim.tbl_extend("force", o, { desc = desc }) end
         local lmap = vim.keymap.set
 
-        lmap("n", "<leader>f", function() 
-            vim.lsp.buf.format({ async = true }) 
+        -- quick fix
+        lmap('n', '<leader>qf', vim.lsp.buf.code_action, { desc = "Quick Fix" })
+
+        lmap("n", "<leader>f", function()
+            vim.lsp.buf.format({ async = true })
         end, ext("Format buffer"))
 
         lmap("n", "<C-k>", function()
@@ -110,8 +113,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         lmap("v", "<C-k>", function()
             vim.lsp.buf.format({ range = {} })
             vim.api.nvim_feedkeys(
-                vim.api.nvim_replace_termcodes("<Esc>", true, false, true), 
-                "n", 
+                vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+                "n",
                 false
             )
         end, ext("Format selection and exit Visual mode"))
@@ -200,7 +203,7 @@ require("lazy").setup({
 })
 
 -- Post plugin import
-vim.api.nvim_set_hl(0, 'Comment', { italic=true })
+vim.api.nvim_set_hl(0, 'Comment', { fg = "#504870", italic=true })
 
 
 -- Lsp
