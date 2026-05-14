@@ -11,6 +11,7 @@ opt.incsearch      = true
 opt.ignorecase     = true
 opt.wrap           = false
 opt.cursorline     = true
+opt.inccommand     = "nosplit"
 opt.signcolumn     = "number"
 opt.syntax         = "on"
 opt.scrolloff      = 8
@@ -28,6 +29,9 @@ opt.undofile  = true
 opt.listchars = { tab = "| ", extends = "›", precedes = "‹", nbsp = "·", trail = "·" }
 opt.showbreak = "↪ "
 opt.list      = true
+
+opt.foldmethod     = "syntax"
+opt.foldlevelstart = 20
 
 vim.g.mapleader = ","
 
@@ -51,6 +55,7 @@ local function set_tabs_default()
 
   tabs_rlc = false
 end
+--set_tabs_rlc()
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
@@ -110,7 +115,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, ext("Format current line"))
 
         lmap("v", "<C-k>", function()
-            vim.lsp.buf.format({ range = {} })
+            local start_line = math.min(vim.fn.line("v"), vim.fn.line("."))
+            local end_line   = math.max(vim.fn.line("v"), vim.fn.line("."))
+            local total      = vim.api.nvim_buf_line_count(0)
+
+            if start_line > 1 then
+                start_line = start_line - 1
+            end
+
+            vim.cmd("normal! " .. start_line .. "GV" .. end_line .. "G")
+            vim.lsp.buf.format()
+
             vim.api.nvim_feedkeys(
                 vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
                 "n",
@@ -211,7 +226,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.lsp.config['clangd'] = {
     cmd = { 'clangd' }, -- Make sure this is in your $PATH
-    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+    filetypes = { 'h', 'c', 'cpp', 'objc', 'objcpp' },
     root_markers = { '.clang-format', '.git', 'compile_commands.json', 'compile_flags.txt' },
     capabilities = capabilities,
 }
