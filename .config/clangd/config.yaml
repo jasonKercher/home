@@ -1,2 +1,6 @@
 CompileFlags:
   Add: -ferror-limit=150
+
+Diagnostics:
+  ClangTidy:
+    Remove: [misc-definitions-in-headers]
