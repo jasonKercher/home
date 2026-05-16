@@ -177,11 +177,22 @@ require("lazy").setup({
             vim.cmd("colorscheme gotham")
         end,
     },
+    --{
+    --    "morhetz/gruvbox",
+    --    lazy = false,
+    --    priority = 1000,
+    --    config = function()
+    --        vim.opt.termguicolors = true
+    --        vim.opt.background = "light"
+    --        vim.cmd("colorscheme gruvbox")
+    --    end,
+    --},
     { "romainl/flattened", lazy = true },
     {
         "vim-airline/vim-airline",
         dependencies = { "vim-airline/vim-airline-themes" },
         config = function() vim.g.airline_theme = "gotham" end,
+        --config = function() vim.g.airline_theme = "gruvbox" end,
     },
     {
         "Yggdroot/indentLine",
