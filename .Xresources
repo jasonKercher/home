@@ -1,4 +1,9 @@
-xterm*font:     *-fixed-*-*-*-18-*
+xterm*Background: black
+xterm*Foreground: grey
+xterm*font:       *-fixed-*-*-*-15-*
+xterm*faceName:   Iosevka
+xterm*faceSize:   15
+
 xterm*vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
