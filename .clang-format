@@ -78,7 +78,7 @@ IncludeIsMainRegex: (Test)?$
 IncludeIsMainSourceRegex: ''
 IndentCaseLabels: false
 IndentGotoLabels: true
-IndentPPDirectives: BeforeHash
+IndentPPDirectives: Leave # BeforeHash (Leave is fairly new)
 PPIndentWidth: 2
 IndentWidth: 8
 IndentWrappedFunctionNames: false
