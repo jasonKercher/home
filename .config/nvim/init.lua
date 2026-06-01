@@ -11,7 +11,6 @@ opt.incsearch      = true
 opt.ignorecase     = true
 opt.wrap           = false
 opt.cursorline     = true
-opt.inccommand     = ""
 opt.signcolumn     = "number"
 opt.syntax         = "on"
 opt.scrolloff      = 8
@@ -30,8 +29,10 @@ opt.listchars = { tab = "| ", extends = "›", precedes = "‹", nbsp = "·", tr
 opt.showbreak = "↪ "
 opt.list      = true
 
-opt.foldmethod     = "syntax"
-opt.foldlevelstart = 20
+-- All or nothing here.
+--opt.inccommand     = ""
+--opt.foldmethod     = "syntax"
+--opt.foldlevelstart = 20
 
 vim.g.mapleader = ","
 
