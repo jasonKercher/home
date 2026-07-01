@@ -78,12 +78,12 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- No auto comment from previous line.
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    vim.opt_local.formatoptions:remove({ "r", "o" })
-  end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "*",
+--  callback = function()
+--    vim.opt_local.formatoptions:remove({ "r", "o" })
+--  end,
+--})
 
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -296,5 +296,12 @@ map("n", "<leader>r", function()
     set_tabs_rlc()
   end
 end, { desc = "Toggle tab style (custom <-> default)" })
+
+-- Toggle LSP diagnostics globally
+map("n", "<leader>d", function()
+    local is_enabled = vim.diagnostic.is_enabled()
+    vim.diagnostic.enable(not is_enabled)
+    vim.notify("Diagnostics: " .. (is_enabled and "OFF" or "ON"))
+end, { desc = "Toggle LSP Diagnostics" })
 
 
