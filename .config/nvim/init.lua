@@ -110,12 +110,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         lmap('n', '<leader>qf', vim.lsp.buf.code_action, { desc = "Quick Fix" })
 
         lmap("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
+            vim.lsp.buf.format({ timeout_ms = 5000, async = true })
         end, ext("Format buffer"))
 
         lmap("n", "<C-k>", function()
             local line = vim.api.nvim_win_get_cursor(0)[1]
             vim.lsp.buf.format({
+		timeout_ms = 5000,
+		async = true,
                 range = {
                     ["start"] = { line, 0 },
                     ["end"] = { line, 999 },
