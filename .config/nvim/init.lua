@@ -135,7 +135,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end
 
             vim.cmd("normal! " .. start_line .. "GV" .. end_line .. "G")
-            vim.lsp.buf.format()
+            vim.lsp.buf.format({ timeout_ms = 5000, async = true })
 
             vim.api.nvim_feedkeys(
                 vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
