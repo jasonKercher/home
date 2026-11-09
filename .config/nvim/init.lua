@@ -171,6 +171,8 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+-- Disable inserting closing braces and quotes.
+vim.g.minipairs_disable = true
 
 -- =============================================
 -- PLUGINS & NATIVE LSP CONFIG
